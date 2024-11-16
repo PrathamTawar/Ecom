@@ -13,11 +13,10 @@ def getProducts(request, pk = None):
         data = serializer.data
         return Response(data)
 
-    else:
-        item = AllProduct.objects.get(id=pk)
-        serializer = ProductSerializer(item)
-        data = serializer.data
-        return Response(data)
+    item = AllProduct.objects.get(id=pk)
+    serializer = ProductSerializer(item)
+    data = serializer.data
+    return Response(data)
 
 
 @api_view(['POST'])
