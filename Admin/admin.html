@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Admin Panel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/inter/3.19.3/inter.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Product Management</h1>
+            <button id="toggle-form-btn" class="add-product">Add New Product</button>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Products</div>
+                <div class="stat-value"></div>
+                <div class="stat-trend trend-up">
+                    ↑ 12.5% from last month
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Average Price</div>
+                <div class="stat-value">$89.99</div>
+                <div class="stat-trend trend-up">
+                    ↑ 3.2% from last month
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Categories</div>
+                <div class="stat-value">16</div>
+                <div class="stat-trend trend-up">
+                    ↑ 2 new categories
+                </div>
+            </div>
+        </div>
+
+<!-- -------new product form============ -->
+        <div id="form-section" class="form-section">
+            <h2>Add New Product</h2>
+            <form id="product-form">
+                <div class="form-group">
+                    <label for="product-image">Upload Image*</label>
+                    <input type="file" id="product-image" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-name">Product Name*</label>
+                    <input type="text" id="product-name" placeholder="Enter product name" >
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Description</label>
+                    <input type="text" id="product-description" placeholder="Enter product category">
+                </div>
+                <div class="form-group">
+                    <label for="product-category">Category*</label>
+                    <input type="text" id="product-category" placeholder="Enter product category" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price*</label>
+                    <input type="number" id="product-price" placeholder="Enter product price" required>
+                </div>
+                <button type="submit" class="submit-btn">Add Product</button>
+            </form>
+        </div>
+
+<!-- -------------edit product form----------- -->
+        <div id="edit-form-section" class="form-section">
+            <h2 id="form-title-id"></h2>
+            <form id="edit-product-form">
+                <div class="form-group">
+                    <label for="edit-product-image">Upload New Image</label>
+                    <input type="file" id="edit-product-image">
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-name">Product Name*</label>
+                    <input type="text" id="edit-product-name" placeholder="Enter product name" >
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-description">Description</label>
+                    <input type="text" id="edit-product-description" placeholder="Enter product description">
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-category">Category*</label>
+                    <input type="text" id="edit-product-category" placeholder="Enter product category" >
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-price">Price*</label>
+                    <input type="float" id="edit-product-price" placeholder="Enter product price" >
+                </div>
+                <input type="hidden" id="edit-product-id">
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">Update Product</button>
+                    <button type="button" class="submit-btn" id="cancel-edit" style="background: #64748B; margin-left: 10px;">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="products-table">
+            <div class="table-header">
+                <h2 class="table-title">Products</h2>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- <tr>
+                            <td>
+                                <div class="product-cell">
+                                    <img src="" alt="Product" class="product-image">
+                                    <div class="product-info">
+                                        <div class="product-name">Modern Desk Lamp</div>
+                                        <div class="product-category">Lighting</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Home & Living</td>
+                            <td class="price">$129.99</td>
+                            <td>
+                                <div class="actions">
+                                    <button class="action-btn">✏️</button>
+                                    <button class="action-btn">🗑️</button>
+                                </div>
+                            </td>
+                        </tr> -->
+                        
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div class="pagination">
+                <div class="page-info">
+                    Showing 1 to 10 of 2,431 entries
+                </div>
+                <div class="page-buttons">
+                    <button class="page-btn">Previous</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+<script src="admin.js"></script>
+</html>

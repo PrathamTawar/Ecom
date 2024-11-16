@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 Cart - Shop</title>
+    <link rel="stylesheet" href="../Home/home.css">
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../Home/index.html" class="logo">24 Cart</a>
+            <div class="nav-links">
+                <a href="../Home/home.html">Home</a>
+                <a href="#" class="active">Shop</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="shop-container">
+        <aside class="filters">
+            <div class="filter-section">
+                <h3>Categories</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" name="category" value="electronics">
+                        <span>Electronics</span>
+                        <span class="count">(12)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="category" value="fashion">
+                        <span>Fashion</span>
+                        <span class="count">(8)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="category" value="home">
+                        <span>Home & Living</span>
+                        <span class="count">(15)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="category" value="accessories">
+                        <span>Accessories</span>
+                        <span class="count">(10)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Price Range</h3>
+                <div class="price-range">
+                    <input type="range" min="0" max="1000" value="500" class="price-slider">
+                    <div class="price-inputs">
+                        <span>$</span>
+                        <input type="number" placeholder="Min" class="price-input">
+                        <span>-</span>
+                        <input type="number" placeholder="Max" class="price-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Rating</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" name="rating" value="5">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span class="count">(25)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="rating" value="4">
+                        <span>⭐⭐⭐⭐</span>
+                        <span class="count">(42)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="rating" value="3">
+                        <span>⭐⭐⭐</span>
+                        <span class="count">(18)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="apply-filters">Apply Filters</button>
+        </aside>
+
+        <main class="products-section">
+            <div class="products-header">
+                <h2>All Products</h2>
+                <div class="products-controls">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search products...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <select class="sort-select">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <!-- added by js -->
+            </div>
+
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">...</button>
+                <button class="page-btn">10</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>
