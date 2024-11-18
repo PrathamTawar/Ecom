@@ -31,7 +31,7 @@ def setProducts(request):
     
     
 @api_view(['DELETE', 'PUT'])
-def deleteProducts(request, pk):
+def changeProducts(request, pk):
     
     item = AllProduct.objects.get(id=pk)
     
@@ -49,6 +49,7 @@ def deleteProducts(request, pk):
         item.product_category = request.data['product_category']
         item.product_price = request.data['product_price']
         product_img = request.data['product_img']
+        
         if product_img != 'undefined':
             item.product_img = product_img
         
@@ -58,3 +59,34 @@ def deleteProducts(request, pk):
             return Response('edited')
         except Exception as e:
             return Response('Error= ', e)
+        
+        
+@api_view(['PUT'])
+def cartProducts(request, pk):
+    
+    item = AllProduct.objects.get(id=pk)
+    
+    if 'todo' in request.data:
+        if request.data['todo'] == 'add':
+            item.product_cartQuantity += 1
+            item.save()
+            return Response('+1')
+    
+        
+        item.product_cartQuantity -= 1
+        if not item.product_cartQuantity:
+            item.product_isInCart = False
+        item.save()
+        return Response('-1')
+    
+    
+    
+   
+    item.product_isInCart = request.data['product_isInCart']
+    if item.product_isInCart:
+        item.product_cartQuantity += 1
+    else:
+        item.product_cartQuantity = 0
+    item.save()
+    
+    return Response('Item added to cart')

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 Cart - Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../Home/home.html" class="logo">24 Cart</a>
+            <div class="nav-links">
+                <a href="../Home/home.html">Home</a>
+                <a href="../Shop/shop.html">Shop</a>
+                <a href="#">Contact</a>
+                <a id="nav-cart" class="active" href="#">🛒<div id="Number-Of-Item-In-Cart"></div></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="cart-container">
+        <div class="cart-section">
+            <h1 class="cart-title">Shopping Cart</h1>
+            <div class="cart-items">
+
+                <!-- <div class="cart-item">
+                    <div class="item-image">
+                        <img src="/api/placeholder/120/120" alt="Product 1">
+                    </div>
+                    <div class="item-details">
+                        <span class="item-category">Electronics</span>
+                        <h3>Wireless Bluetooth Earbuds</h3>
+                        <div class="item-price">$129.99</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item">✕</button>
+                </div> -->
+
+            </div>
+            <a href="../Shop/shop.html" class="continue-shopping">← Continue Shopping</a>
+        </div>
+
+        <div class="order-summary">
+            <h2 class="cart-title">Order Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subTotal">$179.97</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span>Free</span>
+            </div>
+            <div class="summary-row">
+                <span>Tax</span>
+                <span id="tax">$18.00</span>
+            </div>
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="total">$197.97</span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+<script src="cart.js"></script>
+</html>
