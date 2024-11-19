@@ -100,6 +100,34 @@ body {
   right: -25%;
 }
 
+
+/* alert */
+.alert
+{
+  border: solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10000;
+
+  width: 30%;
+  height: 10%;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.opacity
+{
+  opacity: 1;
+}
+
+
+
 /* Shop Container Layout */
 .shop-container {
   max-width: 80%;

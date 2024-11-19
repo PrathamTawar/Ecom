@@ -3,14 +3,20 @@ const priceSlider = document.querySelector('.price-slider');
 const priceInputs = document.querySelectorAll('.price-input');
 const applyFilters = document.querySelector('.apply-filters');
 const NumberCart = document.querySelector('#Number-Of-Item-In-Cart')
+const alertDiv = document.querySelector('.alert')
 let allProducts = [];
 async function getProducts()
 {
-    data = await axios.get('http://127.0.0.1:8000/api/getproducts/0')
-    allProducts = data.data
-    console.log(allProducts)
-    displayProducts(allProducts)
-    cartCounter(allProducts)
+    try{
+        data = await axios.get('http://127.0.0.1:8000/api/getproducts/0')
+        allProducts = data.data
+        console.log(allProducts)
+        displayProducts(allProducts)
+        cartCounter(allProducts)
+    }
+    catch{
+        productGrid.innerHTML = '<h1 style = "color: red">SORRY, WE ARE EXPERIENCING PROBLEMS. PLEASE TRY AGAIN LATER.</h1>'
+    }
 }
 
 
@@ -65,6 +71,9 @@ async function buyProduct(btns)
         btn.addEventListener('click', async (e) => {
             let id = e.target.getAttribute('data-id')
             await axios.put(`http://127.0.0.1:8000/api/cartitems/${id}`, {product_isInCart: true})
+
+            alertDiv.classList.add('opacity')
+            setTimeout(() => {alertDiv.classList.remove('opacity')}, 500)
         })
     })
 }

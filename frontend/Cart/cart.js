@@ -1,16 +1,23 @@
 const cartItems = document.querySelector('.cart-items');
 const subtotal = document.querySelector('#subTotal');
 const total = document.querySelector('#total');
+const orderSummary = document.querySelector('.order-summary');
 let tax = 18
 const NumberCart = document.querySelector('#Number-Of-Item-In-Cart')
 
 async function getItems() {
-    let data = await axios.get('http://127.0.0.1:8000/api/getproducts/0')
-    data = data.data.filter(products => products.product_isInCart)
-    console.log(data)
-    displayProducts(data)
-    totalPrice(data)
-    cartCounter(data)
+    try{
+        let data = await axios.get('http://127.0.0.1:8000/api/getproducts/0')
+        data = data.data.filter(products => products.product_isInCart)
+        console.log(data)
+        displayProducts(data)
+        totalPrice(data)
+        cartCounter(data)
+    }
+    catch{
+        cartItems.innerHTML = '<h1 style = "color: red">SORRY, WE ARE EXPERIENCING PROBLEMS. PLEASE TRY AGAIN LATER.</h1>'  
+        orderSummary.style.display = 'none'
+    }
 }
 
 function cartCounter(data)
