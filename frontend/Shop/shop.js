@@ -10,7 +10,6 @@ async function getProducts()
     try{
         data = await axios.get('http://127.0.0.1:8000/api/getproducts/0')
         allProducts = data.data
-        console.log(allProducts)
         displayProducts(allProducts)
         cartCounter(allProducts)
     }
@@ -71,7 +70,6 @@ async function buyProduct(btns)
         btn.addEventListener('click', async (e) => {
             let id = e.target.getAttribute('data-id')
             await axios.put(`http://127.0.0.1:8000/api/cartitems/${id}`, {product_isInCart: true})
-            console.log('clicked')
 
             getProducts()
 
