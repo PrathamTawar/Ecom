@@ -9,4 +9,4 @@
 5) make sure the server is running on ```http://127.0.0.1:8000/``` OR change the site inside every JS to your own site
 
 
-#### test project backend runs on local machine same as frontend
+>test project backend runs on local machine same as frontend 
