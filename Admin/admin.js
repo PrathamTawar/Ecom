@@ -3,7 +3,7 @@ const formSection = document.getElementById("form-section");
 const productForm = document.getElementById("product-form");
 const productsTableBody = document.querySelector(".products-table").querySelector("tbody");
 const statValue = document.querySelectorAll(".stat-value");
-
+const url = 'https://prathamtawar.pythonanywhere.com/api'
 toggleFormBtn.addEventListener("click", () => {
   formSection.classList.toggle("active");
 });
@@ -29,7 +29,7 @@ function setValues(products)
 // Fetch products data from an API and populate the table
 async function fetchProducts() {
   try {
-    let products = await axios.get("http://127.0.0.1:8000/api/getproducts/0");
+    let products = await axios.get(`${url}/getproducts/0`);
     products = products.data.reverse();
 
     setValues(products);
@@ -42,7 +42,7 @@ async function fetchProducts() {
             <tr>
             <td>
             <div class="product-cell">
-            <img src="http://127.0.0.1:8000/api${product.product_img}" alt="${product.product_name}" class="product-image">
+            <img src="${url}${product.product_img}" alt="${product.product_name}" class="product-image">
             <div class="product-info">
             <div class="product-name">${product.product_name}</div>
             <div class="product-category">${product.product_category}</div>
@@ -70,7 +70,7 @@ const editProductForm = document.getElementById("edit-product-form");
 const cancelEditBtn = document.getElementById("cancel-edit");
 
 async function editProduct(id) {
-  let product = await axios.get(`http://127.0.0.1:8000/api/getproducts/${id}`);
+  let product = await axios.get(`${url}/getproducts/${id}`);
   product = product.data;
 
   document.getElementById("edit-product-id").value = id;
@@ -121,7 +121,7 @@ productsTableBody.addEventListener("click", (e) => {
 async function changeProduct(id, method, editedData = {}) {
   await axios({
     method: `${method}`,
-    url: `http://127.0.0.1:8000/api/changeproducts/${id}`,
+    url: `${url}/changeproducts/${id}`,
     data: editedData,
   });
   fetchProducts();
@@ -144,7 +144,7 @@ productForm.addEventListener("submit", async (e) => {
   formData.append("product_img", image);
 
   const response = await axios.post(
-    "http://127.0.0.1:8000/api/setproducts",
+    `${url}/setproducts`,
     formData
   );
 

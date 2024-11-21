@@ -4,11 +4,12 @@ const priceInputs = document.querySelectorAll('.price-input');
 const applyFilters = document.querySelector('.apply-filters');
 const NumberCart = document.querySelector('#Number-Of-Item-In-Cart')
 const alertDiv = document.querySelector('.alert')
+const url = 'https://prathamtawar.pythonanywhere.com/api'
 let allProducts = [];
 async function getProducts()
 {
     try{
-        data = await axios.get('http://127.0.0.1:8000/api/getproducts/0')
+        data = await axios.get(`${url}/getproducts/0`)
         allProducts = data.data
         displayProducts(allProducts)
         cartCounter(allProducts)
@@ -35,7 +36,7 @@ function createCards(product, index, data)
     productCard.innerHTML = `
     ${index >= Math.floor(data.length/2)? `<span class="badge">New</span>` : ''}
     <div class="product-image">
-    <img src="http://127.0.0.1:8000/api${product.product_img}" alt="${product.product_name}">
+    <img src="${url}${product.product_img}" alt="${product.product_name}">
     </div>
     <div class="product-info">
     <div class="product-category">${product.product_category}</div>
@@ -69,7 +70,7 @@ async function buyProduct(btns)
     btns.forEach(btn => {
         btn.addEventListener('click', async (e) => {
             let id = e.target.getAttribute('data-id')
-            await axios.put(`http://127.0.0.1:8000/api/cartitems/${id}`, {product_isInCart: true})
+            await axios.put(`${url}/cartitems/${id}`, {product_isInCart: true})
 
             getProducts()
 

@@ -4,10 +4,11 @@ const total = document.querySelector('#total');
 const orderSummary = document.querySelector('.order-summary');
 let tax = 18
 const NumberCart = document.querySelector('#Number-Of-Item-In-Cart')
+const url = 'https://prathamtawar.pythonanywhere.com/api'
 
 async function getItems() {
     try{
-        let data = await axios.get('http://127.0.0.1:8000/api/getproducts/0')
+        let data = await axios.get(`${url}/getproducts/0`)
         data = data.data.filter(products => products.product_isInCart)
         console.log(data)
         displayProducts(data)
@@ -39,7 +40,7 @@ function createCards(product)
     cartItems.innerHTML += `
                 <div class="cart-item">
                     <div class="item-image">
-                        <img src="http://127.0.0.1:8000/api${product.product_img}" alt="${product.product_name}">
+                        <img src="${url}${product.product_img}" alt="${product.product_name}">
                     </div>
                     <div class="item-details">
                         <span class="item-category">${product.product_category}</span>
@@ -89,7 +90,7 @@ function removeFromCart(btns)
     btns.forEach(btn => {
         btn.addEventListener('click', async (e) => {
             let id = e.target.getAttribute('data-id')
-            await axios.put(`http://127.0.0.1:8000/api/cartitems/${id}`, {product_isInCart: false})
+            await axios.put(`${url}/cartitems/${id}`, {product_isInCart: false})
             getItems()
         })
     })
@@ -101,7 +102,7 @@ function changeQuantity(btns)
         btn.addEventListener('click', async (e) => {
             console.log(e.target.id)
             let id = e.target.getAttribute('data-id')
-            await axios.put(`http://127.0.0.1:8000/api/cartitems/${id}`, {todo: e.target.id})
+            await axios.put(`${url}/cartitems/${id}`, {todo: e.target.id})
             getItems()
         })
     })
