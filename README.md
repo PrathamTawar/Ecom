@@ -11,5 +11,6 @@
 # To checkout the page without cloning go to:- [24 Cart](https://prathamtawar.github.io/Ecom/frontend/Home/home.html)
 
 >2#Backend is live now runs on github pages if you want to check it out
+
 >1#test project backend runs on local machine same as frontend
 
