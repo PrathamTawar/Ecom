@@ -10,13 +10,13 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="/Ecom/frontend/Home/home.html" class="logo">24 Cart</a>
+            <a href="/frontend/Home/home.html" class="logo">24 Cart</a>
             <div class="nav-links">
-                <a href="/Ecom/frontend/Home/home.html">Home</a>
+                <a href="/frontend/Home/home.html">Home</a>
                 <a href="#" class="active">Shop</a>
                 <a href="#">Contact</a>
                 
-                <a id="nav-cart" href="/Ecom/frontend/Cart/cart.html">🛒 <div id="Number-Of-Item-In-Cart"></div></a>
+                <a id="nav-cart" href="/frontend/Cart/cart.html">🛒 <div id="Number-Of-Item-In-Cart"></div></a>
             </div>
         </div>
     </nav>
@@ -28,8 +28,11 @@
     <div class="shop-container">
         <aside class="filters">
             <div class="filter-section">
-                <h3>Categories</h3>
-                <div class="filter-options">
+                <div class="filter-header">
+                    <h3>Categories</h3>
+                    <button onclick="clearFilters()" class="clear-filters">Clear</button>
+                </div>
+                <div id = "category-container" class="filter-options">
                     <label class="filter-option">
                         <input type="checkbox" name="category" value="electronics">
                         <span>Electronics</span>
@@ -88,6 +91,7 @@
             </div>
 
             <button class="apply-filters">Apply Filters</button>
+            
         </aside>
 
         <main class="products-section">

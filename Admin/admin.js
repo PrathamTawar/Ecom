@@ -102,10 +102,11 @@ editProductForm.addEventListener("submit", async (e) => {
   formData.append("product_img", image);
 
   changeProduct(id, "put", formData);
+  editFormSection.classList.remove("active");
+  alert("Product Updated");
 });
 
 cancelEditBtn.addEventListener("click", () => {
-  editFormSection.classList.remove("active");
   editProductForm.reset();
 });
 

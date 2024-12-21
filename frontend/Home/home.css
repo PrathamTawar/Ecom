@@ -85,6 +85,21 @@ body {
     width: 100%;
 }
 
+#nav-cart {
+    position: relative;
+  }
+  
+#Number-Of-Item-In-Cart {
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  position: absolute;
+  top: -50%;
+  right: -25%;
+}
+
 .hero {
     margin-top: 4rem;
     padding: 8rem 2rem;

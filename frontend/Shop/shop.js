@@ -13,6 +13,8 @@ async function getProducts()
         allProducts = data.data
         displayProducts(allProducts)
         cartCounter(allProducts)
+        showCategories(allProducts)
+        
     }
     catch{
         productGrid.innerHTML = '<h1 style = "color: red">SORRY, WE ARE EXPERIENCING PROBLEMS. PLEASE TRY AGAIN LATER.</h1>'
@@ -28,6 +30,36 @@ function cartCounter(data)
     NumberCart.innerHTML = total
 }
 
+const capitalize = (str) => str ? str[0].toUpperCase() + str.slice(1) : str;
+
+function showCategories(data)
+{
+    const categoryMap = data.reduce((map, product, index) => {
+        const category = product.product_category;
+        if (!map[category]) {
+          map[category] = [];
+        }
+        map[category].push(index); // Add the current index directly
+        return map;
+      }, {});   
+      
+    console.log(categoryMap)
+    const categoryContainer = document.querySelector('#category-container')
+    categoryContainer.innerHTML = ''
+
+    Object.keys(categoryMap).forEach(category => {
+
+        categoryContainer.innerHTML += `
+                    <label class="filter-option">
+                        <input class="category-checkbox" type="checkbox" name="category" value="${category}">
+                        <span>${capitalize(category)}</span>
+                        <span class="count">(${categoryMap[category].length})</span>
+                    </label>`
+
+    })
+    
+}
+
 function createCards(product, index, data)
 {
     let productCard = document.createElement('div')
@@ -39,8 +71,8 @@ function createCards(product, index, data)
     <img src="${url}${product.product_img}" alt="${product.product_name}">
     </div>
     <div class="product-info">
-    <div class="product-category">${product.product_category}</div>
-    <h3>${product.product_name}</h3>
+    <div class="product-category">${capitalize(product.product_category)}</div>
+    <h3>${capitalize(product.product_name)}</h3>
     <div class="product-rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
     <p>${product.product_desc}</p>
     <span class="price">$${product.product_price}</span>
@@ -83,6 +115,20 @@ async function buyProduct(btns)
 
 
 // -----FILTERS-------
+function filterByCategory(category) {
+    // Create a Set of checked categories for faster lookups
+    const checkedCategories = new Set([...category].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value));
+  
+    // Filter products based on the checked categories
+    if(checkedCategories.size === 0){
+        return 0
+    }
+    const filteredProducts = allProducts.filter(product => checkedCategories.has(product.product_category));
+  
+    displayProducts(filteredProducts);
+  }
+  
+
 function filterByPriceRange(min, max)
 {
     let filteredProducts = allProducts.filter(product => min <= product.product_price && product.product_price <= max)
@@ -90,11 +136,19 @@ function filterByPriceRange(min, max)
 }
 
 applyFilters.addEventListener('click', () => {
+
     let min = priceInputs[0].value
     let max = priceInputs[1].value
     priceSlider.setAttribute('min', min)
     priceSlider.setAttribute('max', max)
-    filterByPriceRange(min, max)
+    if (min && max)
+    {
+        filterByPriceRange(min, max)
+    }
+    
+    let categoryCheckboxes = document.querySelectorAll('.category-checkbox')
+    filterByCategory(categoryCheckboxes)
+
 })
 
 priceSlider.addEventListener('change', (e) => {
@@ -105,4 +159,9 @@ priceSlider.addEventListener('change', (e) => {
     filterByPriceRange(minPrice, price)
 })
 
+
+function clearFilters()
+{
+    getProducts()
+}
 getProducts()
