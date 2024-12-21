@@ -60,13 +60,13 @@ function createCards(product)
 
 function displayProducts(data)
 {
-    cartItems.innerHTML = ''
     if(data.length === 0)
     {   
         document.querySelector('.if-empty').classList.add('displayYes')
     }
     else
     {
+        cartItems.innerHTML = ''
         document.querySelector('.if-empty').classList.remove('displayYes')
     }
 
