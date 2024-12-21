@@ -107,10 +107,14 @@ body {
     padding: 3rem;
     text-align: center;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    display: none;
+}
+
+.displayYes {
+    display: flex;
 }
 
 .empty-cart-icon {

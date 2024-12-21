@@ -63,16 +63,11 @@ function displayProducts(data)
     cartItems.innerHTML = ''
     if(data.length === 0)
     {   
-        cartItems.innerHTML = `
-                <div class="if-empty">
-                    <div class="empty-cart-icon">🛒</div>
-                    <h2 class="empty-cart-title">Your Cart is Empty</h2>
-                    <p class="empty-cart-subtitle">
-                        Looks like you haven't added any items to your cart yet. 
-                        Let's explore our amazing products and find something you'll love!
-                    </p>
-                    <a href="Ecom/frontend/Shop/shop.html" class="shop-now-btn">Shop Now</a>
-                </div>`
+        document.querySelector('.if-empty').classList.add('displayYes')
+    }
+    else
+    {
+        document.querySelector('.if-empty').classList.remove('displayYes')
     }
 
     data.forEach((product) => {
