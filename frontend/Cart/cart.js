@@ -60,14 +60,19 @@ function createCards(product)
 
 function displayProducts(data)
 {
+    cartItems.innerHTML = ''
     if(data.length === 0)
     {   
-        document.querySelector('.if-empty').classList.add('displayYes')
-    }
-    else
-    {
-        cartItems.innerHTML = ''
-        document.querySelector('.if-empty').classList.remove('displayYes')
+        cartItems.innerHTML = `
+                <div class="if-empty">
+                    <div class="empty-cart-icon">🛒</div>
+                    <h2 class="empty-cart-title">Your Cart is Empty</h2>
+                    <p class="empty-cart-subtitle">
+                        Looks like you haven't added any items to your cart yet. 
+                        Let's explore our amazing products and find something you'll love!
+                    </p>
+                    <a href="Ecom/frontend/Shop/shop.html" class="shop-now-btn">Shop Now</a>
+                </div>`
     }
 
     data.forEach((product) => {
