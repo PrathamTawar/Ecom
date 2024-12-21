@@ -71,7 +71,7 @@ function displayProducts(data)
                         Looks like you haven't added any items to your cart yet. 
                         Let's explore our amazing products and find something you'll love!
                     </p>
-                    <a href="/Ecom/frontend/Shop/shop.html" class="shop-now-btn">Shop Now</a>
+                    <a href="Ecom/frontend/Shop/shop.html" class="shop-now-btn">Shop Now</a>
                 </div>`
     }
 
